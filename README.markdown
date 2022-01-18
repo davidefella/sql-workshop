@@ -15,3 +15,12 @@ An SQL database is a collection of related information stored in tables. Each ta
 A remote company can have multiple databases, a single database can have multiple tables. 
 
 [TABLE PHOTO]
+
+
+All tables then consist of different columns that describe the data and also consist of rows, which are individual entries into the table. 
+
+
+Basic SQL Queries
+---------------------
+
+All the operatations that you can do with data follow the `CRUD` acronym. CRUD stands for the 4 main operations we perform when we query a database: `Create`, `Read`, `Update`, and `Delete`.
