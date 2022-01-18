@@ -14,11 +14,4 @@ An SQL database is a collection of related information stored in tables. Each ta
 
 A remote company can have multiple databases, a single database can have multiple tables. 
 
-+----------------------+
-| Tables_in_employees  |
-+----------------------+
-| engineering          |
-| product              |
-| marketing            |
-| sales                |
-+----------------------+
+[TABLE PHOTO]
