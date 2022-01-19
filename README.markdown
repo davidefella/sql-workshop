@@ -24,3 +24,19 @@ Basic SQL Queries
 ---------------------
 
 All the operatations that you can do with data follow the `CRUD` acronym. CRUD stands for the 4 main operations we perform when we query a database: `Create`, `Read`, `Update`, and `Delete`.
+
+But First, let's create the structure. To create a database named engineering, we can use the following code:
+
+`CREATE DATABASE engineering;`
+
+This query creates a new table inside the database.
+
+`CREATE TABLE table_name (`
+`    column1 datatype,`
+`    column2 datatype,`
+`    column3 datatype`
+`);`
+
+
+
+
