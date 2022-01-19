@@ -31,11 +31,7 @@ But First, let's create the structure. To create a database named engineering, w
 
 This query creates a new table inside the database.
 
-`CREATE TABLE table_name (`
-`    column1 datatype,`
-`    column2 datatype,`
-`    column3 datatype`
-`);`
+`CREATE TABLE table_name (column1 datatype, olumn2 datatype, olumn3 datatype);`
 
 
 
