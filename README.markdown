@@ -415,3 +415,47 @@ Oppure
 alter table po_headers_new_new alter column description set default 'Sono un valore di default';
 ```
 
+### OPERAZIONI DI JOIN 
+
+- operazione nei database relazionali che permette di interrogare più tabelle di database mettendone in relazione i dati.
+
+- Il principio del join SQL si basa sull'omonima operazione algebrica relazionale, cioè una combinazione derivata da un prodotto cartesiano e da una selezione. 
+
+- Nota: Il prodotto cartesiano (o unione incrociata) è un'operazione di teoria degli insiemi in cui due o più insiemi sono collegati tra loro. La selezione è un'operazione di algebra relazionale che consente di selezionare specifiche tuple da un set iniziale e di inviarle come risultato.
+
+- Vi sono diversi tipi di join SQL che consentono di eseguire query utilizzando un insieme di tabelle di database. Il prerequisito per fare ciò è che le tabelle selezionate siano collegate tra loro utilizzando relazioni a chiave esterna.
+
+- I tipi di join più importanti sono **inner join** e **outer join** 
+
+![alt text](https://www.ionos.it/digitalguide/fileadmin/DigitalGuide/Screenshots/DE-SQL-Join-Typen.png)
+
+
+## INNER JOIN
+
+```
+SELECT <Elenco campi> FROM tabella_a **INNER JOIN** tabella_b **ON** tabella_a.pk_a = tabella_b.pk_b
+```
+
+## OUTER JOIN 
+
+
+### LEFT OUTER JOIN 
+
+- Restituisce tutte le righe della prima tabella (nell’esempio Impiegati), anche se non ci sono corrispondenze nella seconda tabella
+
+
+```
+SELECT <Elenco campi> FROM tabella_a **LEFT JOIN** tabella_b **ON** tabella_a.pk_a = tabella_b.pk_b
+```
+
+### RIGHT OUTER JOIN 
+
+```
+SELECT <Elenco campi> FROM tabella_a **RIGHT JOIN** tabella_b **ON** tabella_a.pk_a = tabella_b.pk_b
+```
+
+### FULL OUTER JOIN 
+
+```
+SELECT <Elenco campi> FROM tabella_a **FULL JOIN** tabella_b **ON** tabella_a.pk_a = tabella_b.pk_b
+```
