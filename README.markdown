@@ -198,6 +198,220 @@ WHERE  employee_id BETWEEN 3 AND 7
 
 This selects all comlumns that have an `employee_id` between` 3 and 7` `AND` have a country of `Germany`.
 
+## OPERATORE IN
+
+- L'operatore IN si usa per verificare l'appartenenza di un valore a un insieme. 
+
+- Quando le clausole di ricerca sono molte l'operatore IN è molto più pratico. Evita di ripetere ogni volta il nome del campo, l'operatore uguale e l'operatore logico OR.
+
+```
+SELECT [campi] FROM [tabella] WHERE [campo] IN ( [clausole di ricerca] ) ;
+```
+
+Ad esempio, il per il nostro progetto una possibile query sarebbe
+
+```
+SELECT id FROM ordine WHERE nome_pizza IN ('margherita', 'diavola') ;
+```
+
+L'ultima query sarebbe equivalente a 
+
+```
+SELECT id FROM ordine WHERE nome_pizza = 'margherita' OR nome_pizza = 'diavola';
+```
+
+## LIKE
+
+- Mi permette di analizzare il contenuto **parziale** di una stringa
+
+- Utilizza due caratteri speciali da inserire dentro le stringhe: **%** e **_**
+
+- Il simbolo **%** sostituisce un insieme di caratteri in una stringa 
+
+- Il simbolo **_** mi sostituisce un carattere in una stringa 
+
+La sintassi da utilizzare è la seguente: 
+
+```
+SELECT [campi] FROM [tavola] WHERE [campo LIKE stringa] 
+```
+
+Ecco alcuni esempi relativi al nostro progetto: 
 
 
+- Tutti i clienti che hanno 'avi' in mezzo al loro nome 
+
+```
+select * from ordine where nome_cliente like '%avi%'; 
+```
+
+- Tutti i clienti che inziano per 'Anna' 
+```
+select * from ordine where nome_cliente like 'Anna%'; 
+```
+
+- Tutti i clienti che si chiamano Mario o Maria
+```
+select * from ordine where nome_cliente like 'Mari_'; 
+```
+
+## ISTRUZIONE DROP 
+
+- Usata per rimuovere indici, tabelle e database
+
+```
+DROP TABLE table_name
+```
+
+```
+DROP DATABASE database_name
+```
+
+## VINCOLI (CONSTRAINTS)
+
+- Limitare il tipo di dati che possono andare in una tabella.
+
+- Accuratezza, affidabilità ed integrità nei dati perché se c'è una violazione del vincolo, l'operazione viene interrotta. 
+
+- A livello di colonna (dominio), tabella o attributo.
+
+```
+CREATE TABLE table_name (column datatype constraint);
+```
+
+Questi sono alcuni di quelli più utilizzati: 
+- NOT NULL - Assicura che una colonna non contenga valori NULL
+- UNIQUE - Assicura che una colonna non abbia valori duplicati
+- PRIMARY KEY - Una combinazione NOT NULL + UNIQUE, identifica in maniera univoca una riga in una tabella
+- FOREIGN KEY - Assicura la relazione tra tabelle
+- CHECK - Assicura che i valori di una colonna rispettino una condizione 
+- DEFAULT - Set di un valore di default per un attributo
+- CREATE INDEX - Crea un indice che migliora la performance per alcune operazioni
+
+
+### NOT NULL 
+
+- Di default, una colonna può avere valori NULL. Il vincolo NOT NULL forza un attributo ad essere **diverso da NULL**. 
+
+```
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+```
+oppure
+
+```
+ALTER TABLE Persons ALTER COLUMN Age SET NOT NULL;
+```
+
+### UNIQUE 
+
+- Assicura che tutti i valori di una colonna di una tabella sono differenti. 
+
+```
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+oppure 
+
+```
+ALTER TABLE Persons ADD CONSTRAINT age_unique UNIQUE(age);
+```
+
+### PRIMARY KEY  
+
+- Una chiave primaria identifica un record in una tabella
+
+- Una chiave primaria deve per forza avere un valore **unico** e **non può contenere valori nulli**
+
+- Una tabella, quindi, può avere una sola chiave primaria 
+
+```
+CREATE TABLE po_headers (
+	po_no INTEGER PRIMARY KEY,
+	vendor_no INTEGER,
+	description TEXT,
+	shipping_address TEXT
+);
+```
+oppure 
+
+```
+ALTER TABLE po_headers ADD PRIMARY KEY (po_no);
+```
+
+### FOREIGN KEY  
+
+- E' un vincolo che mi assicura che le relazioni tra tabelle siano coerenti 
+
+- La chiave esterna è un campo legato ad una **chiave primaria di un'altra relazione** (tabella)
+
+- La tabella con la chiave esterna è chiamata tabella figlia, quella con la chiave primaria è chiamata tabella padre. 
+
+```
+CREATE TABLE contacts(
+   phone VARCHAR(15),
+   email VARCHAR(100),
+   contact_id INTEGER PRIMARY KEY,
+   customer_id INT,
+   CONSTRAINT fk_customer
+      FOREIGN KEY(customer_id) 
+	  REFERENCES customers(customer_id)
+);
+```
+
+oppure 
+
+```
+ALTER TABLE "contacts" ADD FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+```
+
+### CHECK  
+
+Vincolo utilizzato per garantire che i dati all'interno di una colonna siano coerenti con una determinata condizione
+
+```
+DROP TABLE IF EXISTS employees;
+CREATE TABLE employees (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR (50),
+	last_name VARCHAR (50),
+	birth_date DATE CHECK (birth_date > '1900-01-01'),
+	joined_date DATE CHECK (joined_date > birth_date),
+	salary numeric CHECK(salary > 0)
+);
+```
+
+oppure 
+
+```
+ALTER TABLE po_headers_new_new ADD CONSTRAINT vendor_no_check CHECK (vendor_no >= 0);
+```
+
+### FOREIGN KEY  
+
+- Utilizzata per impostare un valore di default nel caso l'istruzione di INSERT non passi il valore
+
+```
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Sandnes'
+);
+```
+
+Oppure
+
+```
+alter table po_headers_new_new alter column description set default 'Sono un valore di default';
+```
 
