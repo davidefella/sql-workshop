@@ -395,7 +395,7 @@ oppure
 ALTER TABLE po_headers_new_new ADD CONSTRAINT vendor_no_check CHECK (vendor_no >= 0);
 ```
 
-### FOREIGN KEY  
+### DEFAULT  
 
 - Utilizzata per impostare un valore di default nel caso l'istruzione di INSERT non passi il valore
 
