@@ -436,9 +436,6 @@ alter table po_headers_new_new alter column description set default 'Sono un val
 SELECT <Elenco campi> FROM tabella_a **INNER JOIN** tabella_b **ON** tabella_a.pk_a = tabella_b.pk_b
 ```
 
-## OUTER JOIN 
-
-
 ### LEFT OUTER JOIN 
 
 - Restituisce tutte le righe della prima tabella (nell’esempio Impiegati), anche se non ci sono corrispondenze nella seconda tabella
