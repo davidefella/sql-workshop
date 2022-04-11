@@ -34,7 +34,7 @@ There are a variety of datatypes that we can use. Some of the most common ones a
 From our example above, this could look like the following code: 
 
 ```
-CREATE TABLE engineering (employee_id  int(6) NOT NULL, 
+CREATE TABLE engineering (employee_id  integer NOT NULL, 
                           first_name varchar(20) NOT NULL, 
                           last_name varchar(25) NOT NULL, 
                           email varchar(255) NOT NULL, 
@@ -67,13 +67,13 @@ ALTER TABLE engineering ADD birthday date;`
 If we want to alter some column: 
 
 ```
-ALTER TABLE table_name ALTER COLUMN datatype;
+ALTER TABLE table_name ALTER COLUMN nome_colonna TYPE datatype;
 ```
 
 So, let's say we want to alter the firt_name column
 
 ```
-ALTER TABLE engineering ALTER COLUMN first_name varchar(25);
+ALTER TABLE engineering ALTER COLUMN first_name TYPE varchar(25);
 ```
 
 If we want to remove all rows from the table: 
@@ -97,7 +97,7 @@ VALUES(value1, 'value2', value3,..);
 In the INSERT INTO part, we can specify the columns we want to fill with information. Inside VALUES goes the information we want to store. This creates a new record in the table which is a new row.
 
 ```
-INSERT INTO table_name(employee_id,first_name,last_name,email,country,salary) 
+INSERT INTO engineering(employee_id,first_name,last_name,email,country,salary) 
 VALUES (1,'Timmy','Jones','timmy@gmail.com', 'USA',2500.00);
 VALUES (2,'Kelly','Smith','ksmith@gmail.com','UK', 1300.00);
 ```
